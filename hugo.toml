@@ -39,8 +39,8 @@ label = "03 side_projects"
 path = "#projects"
 
 [params.social]
-github = "https://github.com/yourusername"
-linkedin = "https://www.linkedin.com/in/yourname/"
+github = "https://github.com/lpuljic"
+linkedin = "https://www.linkedin.com/in/lanopuljic/"
 
 [params.social_labels]
 github = "> github"
