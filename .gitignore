@@ -5,3 +5,4 @@ resources/
 *.swo
 *~
 .env
+public/
