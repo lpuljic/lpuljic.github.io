@@ -64,16 +64,16 @@ linkedin = "https://www.linkedin.com/in/lanopuljic/"
 github = "> github"
 linkedin = "⧉ linkedin"
 
-# Blog post pagination settings
+# Blog post settings
 [params.blog_post]
 # Number of blog posts shown on blog_posts.
 initialVisible = 15
 # Number of additional posts loaded when clicking "load more"
 loadMoreIncrement = 5
 
-# Work history pagination settings
+# Work history settings
 [params.work_history]
 # Number of work entries shown on initial page load
-initialVisible = 10
+initialVisible = 6
 # Number of additional entries loaded when clicking "load more"
 loadMoreIncrement = 5
