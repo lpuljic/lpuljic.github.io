@@ -19,9 +19,9 @@ jobs:
       - name: Build site
         env:
           GOPRIVATE: github.com/lpuljic/*
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_PRIVATE }}
+          GITHUB_TOKEN: ${{ secrets.PIXELARCH_TOKEN }}
         run: |
-          git config --global url."https://${{ secrets.GITHUB_TOKEN_PRIVATE }}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://${{ secrets.PIXELARCH_TOKEN }}@github.com/".insteadOf "https://github.com/"
           hugo --minify
 
       - name: Deploy to gh-pages
