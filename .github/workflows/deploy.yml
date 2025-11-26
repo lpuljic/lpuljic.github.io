@@ -19,7 +19,10 @@ jobs:
       - name: Build site
         env:
           GOPRIVATE: github.com/lpuljic/*
-        run: hugo --minify
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_PRIVATE }}
+        run: |
+          git config --global url."https://${{ secrets.GITHUB_TOKEN_PRIVATE }}@github.com/".insteadOf "https://github.com/"
+          hugo --minify
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
