@@ -1,0 +1,125 @@
+[
+  {
+    "name": "VGW",
+    "logo": "images/work-history/virtual_gaming_worlds_logo.jpg",
+    "jobs": [
+      {
+        "title": "Senior Platform Engineer",
+        "dateRange": "Aug 2024 — Present",
+        "showProgressLine": true,
+        "relative": true
+      },
+      {
+        "title": "Senior Site Reliability Engineer",
+        "dateRange": "Feb 2023 — Aug 2024"
+      }
+    ]
+  },
+  {
+    "name": "Indebted",
+    "logo": "images/work-history/indebted_logo.jpg",
+    "jobs": [
+      {
+        "title": "Senior DevOps Engineer",
+        "dateRange": "Jun 2022 - Jan 2023"
+      }
+    ]
+  },
+  {
+    "name": "Service NSW",
+    "logo": "images/work-history/servicensw_logo.jpg",
+    "jobs": [
+      {
+        "title": "Platform Manager",
+        "dateRange": "Mar 2022 — Jun 2022",
+        "showProgressLine": true,
+        "relative": true
+      },
+      {
+        "title": "Principal DevOps Engineer",
+        "dateRange": "Oct 2020 — Mar 2022"
+      }
+    ]
+  },
+  {
+    "name": "Qantas",
+    "logo": "images/work-history/qantas_logo.jpg",
+    "jobs": [
+      {
+        "title": "Lead DevOps Engineer",
+        "dateRange": "Jan 2020 — May 2021",
+        "showProgressLine": true,
+        "relative": true
+      },
+      {
+        "title": "Senior Cloud Engineer",
+        "dateRange": "May 2019 — Dec 2019"
+      }
+    ]
+  },
+  {
+    "name": "MedicalDirector",
+    "logo": "images/work-history/medicaldirector_logo.jpg",
+    "jobs": [
+      {
+        "title": "Principal Site Reliability Engineer",
+        "dateRange": "May 2020 - Oct 2020"
+      }
+    ]
+  },
+  {
+    "name": "Tyro Payments",
+    "logo": "images/work-history/tyro_payments_logo.jpg",
+    "extraClass": "tyro-jobs",
+    "jobs": [
+      {
+        "title": "Senior DevOps Engineer",
+        "dateRange": "May 2018 — May 2019",
+        "showProgressLine": true,
+        "relative": true
+      },
+      {
+        "title": "Infrastructure System Engineer",
+        "dateRange": "Jan 2017 — May 2018",
+        "showProgressLine": true,
+        "relative": true
+      },
+      {
+        "title": "System Engineer",
+        "dateRange": "Oct 2014 — Jan 2017"
+      }
+    ]
+  },
+  {
+    "name": "QBE Insurance",
+    "logo": "images/work-history/qbe_logo.jpg",
+    "jobs": [
+      {
+        "title": "Senior System Engineer",
+        "dateRange": "Jul 2009 — Oct 2014",
+        "showProgressLine": true,
+        "relative": true
+      },
+      {
+        "title": "Storage Administrator",
+        "dateRange": "Oct 2008 — Dec 2009"
+      }
+    ]
+  },
+  {
+    "name": "TAS Transaction Solutions",
+    "logo": "images/work-history/tas_logo.jpg",
+    "jobs": [
+      {
+        "title": "Senior System Engineer",
+        "dateRange": "Jan 2005 — Oct 2008",
+        "showProgressLine": true,
+        "relative": true
+      },
+      {
+        "title": "Senior Storage Administrator",
+        "dateRange": "Feb 2002 — Jan 2005"
+      }
+    ]
+  }
+]

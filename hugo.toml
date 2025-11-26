@@ -1,0 +1,57 @@
+baseURL = 'https://yourname.com/'
+languageCode = 'en-us'
+
+[module]
+[[module.imports]]
+path = "github.com/lpuljic/pixelarch"
+
+title = 'pixelarch'
+disableKinds = ['taxonomy', 'term']
+
+[markup.goldmark.parser]
+wrapStandAloneImageWithinParagraph = false
+
+[markup]
+defaultMarkdownHandler = "goldmark"
+
+[params]
+name = "Lano Puljic"
+job_title = "Senior Platform Engineer"
+current_company = "currently @VGW"
+avatar = "images/avatar.png"
+description = "A clean, minimal portfolio for developers"
+bio = "Passionate about building scalable systems and mentoring engineers. Experienced in cloud infrastructure, DevOps, and Site Reliability."
+enableNameAnimation = true
+
+[[params.nav]]
+name = "work"
+label = "01 career_journey"
+path = "/work-history/"
+
+[[params.nav]]
+name = "blog_posts"
+label = "02 blog_posts"
+path = "/blog-page/"
+
+[[params.nav]]
+name = "side_projects"
+label = "03 side_projects"
+path = "#projects"
+
+[params.social]
+github = "https://github.com/yourusername"
+linkedin = "https://www.linkedin.com/in/yourname/"
+
+[params.social_labels]
+github = "> github"
+linkedin = "⧉ linkedin"
+
+# Blog Post Configuration
+[params.blog_post]
+initialVisible = 15
+loadMoreIncrement = 5
+
+# Work History Configuration
+[params.work_history]
+initialVisible = 10
+loadMoreIncrement = 5
