@@ -1,28 +1,44 @@
-baseURL = 'https://yourname.com/'
+# Site base URL for GitHub Pages
+baseURL = 'https://lpuljic.github.io/'
+
+# Language configuration
 languageCode = 'en-us'
 
+# Theme module configuration, where it pulls it from .
 [module]
 [[module.imports]]
 path = "github.com/lpuljic/pixelarch"
 
+# Site title (used in page title tags)
 title = 'pixelarch'
+
+# Disable auto-generated taxonomy and term pages (portfolio site doesn't need these)
 disableKinds = ['taxonomy', 'term']
 
-[markup.goldmark.parser]
-wrapStandAloneImageWithinParagraph = false
-
-[markup]
-defaultMarkdownHandler = "goldmark"
-
+# Core profile information
 [params]
+# Full name displayed in header/footer
 name = "Lano Puljic"
+
+# Current job title
 job_title = "Senior Platform Engineer"
+
+# Company/employment status
 current_company = "currently @VGW"
+
+# Avatar image path (relative to static/ directory)
 avatar = "images/avatar.png"
-description = "A clean, minimal portfolio for developers"
+
+# Site meta description
+description = "My thoughts on the small corner of this universe."
+
+# Biography about me
 bio = "Passionate about building scalable systems and mentoring engineers. Experienced in cloud infrastructure, DevOps, and Site Reliability."
+
+# Enable animated name effect in header
 enableNameAnimation = true
 
+# Navigation menu items (rendered in order)
 [[params.nav]]
 name = "work"
 label = "01 career_journey"
@@ -38,20 +54,26 @@ name = "side_projects"
 label = "03 side_projects"
 path = "#projects"
 
+# Social media profile links
 [params.social]
 github = "https://github.com/lpuljic"
 linkedin = "https://www.linkedin.com/in/lanopuljic/"
 
+# Custom labels for social icons (displayed as link text/title)
 [params.social_labels]
 github = "> github"
 linkedin = "⧉ linkedin"
 
-# Blog Post Configuration
+# Blog post pagination settings
 [params.blog_post]
+# Number of blog posts shown on blog_posts.
 initialVisible = 15
+# Number of additional posts loaded when clicking "load more"
 loadMoreIncrement = 5
 
-# Work History Configuration
+# Work history pagination settings
 [params.work_history]
+# Number of work entries shown on initial page load
 initialVisible = 10
+# Number of additional entries loaded when clicking "load more"
 loadMoreIncrement = 5
