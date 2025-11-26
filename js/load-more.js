@@ -9,15 +9,25 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {number} defaultIncrement - Default items to load per click
      */
     function setupLoadMore(containerId, itemClass, loadBtnId, lessBtnId, defaultInitialVisible, defaultIncrement) {
-        const container = document.getElementById(containerId);
-        const loadBtn = document.getElementById(loadBtnId);
-        const lessBtn = document.getElementById(lessBtnId);
+         const container = document.getElementById(containerId);
+         const loadBtn = document.getElementById(loadBtnId);
+         const lessBtn = document.getElementById(lessBtnId);
 
-        if (!container || !loadBtn) return;
+         if (!container || !loadBtn) return;
 
-        // Parse configuration from data attributes with safe fallbacks
-        const initialVisible = parseInt(container.getAttribute('data-initial-visible'), 10) || defaultInitialVisible;
-        const increment = parseInt(container.getAttribute('data-increment'), 10) || defaultIncrement;
+         // Parse configuration from data attributes with safe fallbacks
+         const initialVisible = parseInt(container.getAttribute('data-initial-visible'), 10) || defaultInitialVisible;
+         const increment = parseInt(container.getAttribute('data-increment'), 10) || defaultIncrement;
+
+         // Initialize visibility on page load
+         const allItems = document.querySelectorAll(`.${itemClass}`);
+         allItems.forEach((item, index) => {
+             if (index < initialVisible) {
+                 item.classList.remove('hidden');
+             } else {
+                 item.classList.add('hidden');
+             }
+         });
 
         // Load more functionality
         loadBtn.addEventListener('click', function() {
