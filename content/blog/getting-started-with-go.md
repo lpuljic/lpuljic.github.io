@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with Go"
 date: 2025-11-12
-description: "A beginner's guide to learning Go programming language"
+description: "A beginner guide to learning Go programming language"
 summary: "Learn the basics of Go programming language, from its key features to writing your first program."
 ---
 
