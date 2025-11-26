@@ -8,7 +8,7 @@
 @keyframes growLine {
     0% {
         transform: scaleY(0);
-        background-color: #d1d5db;
+        background-color: #9ca3af;
     }
     100% {
         transform: scaleY(1);
@@ -18,28 +18,34 @@
 
 @keyframes animateDot {
     0% {
-        background-color: #d1d5db;
+        background-color: #9ca3af;
     }
     100% {
         background-color: #1f2937;
     }
 }
 
+@keyframes activateDot {
+    0% {
+        background-color: #9ca3af;
+    }
+    100% {
+        background-color: #000000;
+    }
+}
+
 /* Default state: progress line is gray and visible */
 .progress-line {
     transform: scaleY(1);
-    background-color: #d1d5db;
+    background-color: #9ca3af;
 }
 
-/* On hover: progress line animates to black */
-.job-item-group:hover .progress-line {
-    animation: growLine 1200ms ease-out forwards;
+/* Default state: dots match the progress line color */
+.job-dot {
+    background-color: #9ca3af;
 }
 
-.job-item-group:hover .job-dot {
-    animation: animateDot 1200ms ease-out forwards;
-}
-
+/* Hover effects on job title - handled by JavaScript for animations */
 .job-item-group:hover .job-title {
     font-weight: 500;
 }
@@ -51,4 +57,9 @@
 
 .job-item-group.animate-previous .job-dot {
     animation: animateDot 1200ms ease-out forwards;
+}
+
+/* Active dot styling - applied by work-history.js when hovering over adjacent job items */
+.job-dot.active-dot {
+    animation: activateDot 1200ms ease-out forwards;
 }

@@ -1,78 +1,131 @@
+/**
+ * Work history timeline interaction - adds hover effects to job items
+ * Animates progress lines and highlights dots when hovering over job entries
+ */
 document.addEventListener('DOMContentLoaded', function() {
     const jobItems = document.querySelectorAll('.job-item-group');
-    
+
+    /**
+     * Find the next job-item-group sibling
+     */
+    function findNextJob(element) {
+        let nextElement = element.nextElementSibling;
+        if (nextElement && nextElement.classList.contains('job-item-group')) {
+            return nextElement;
+        }
+        return null;
+    }
+
+    /**
+     * Find the next job-item-group sibling that contains a progress line
+     */
+    function findNextJobWithProgressLine(element) {
+        let nextElement = element.nextElementSibling;
+        while (nextElement) {
+            if (nextElement.classList.contains('job-item-group') && nextElement.querySelector('.progress-line')) {
+                return nextElement;
+            }
+            nextElement = nextElement.nextElementSibling;
+        }
+        return null;
+    }
+
+    /**
+     * Find the previous job-item-group sibling that contains a progress line
+     */
+    function findPreviousJobWithProgressLine(element) {
+        let previousElement = element.previousElementSibling;
+        while (previousElement) {
+            if (previousElement.classList.contains('job-item-group') && previousElement.querySelector('.progress-line')) {
+                return previousElement;
+            }
+            previousElement = previousElement.previousElementSibling;
+        }
+        return null;
+    }
+
+    /**
+     * Clear all active states from job items
+     */
+    function clearAllStates() {
+        jobItems.forEach(function(item) {
+            item.classList.remove('animate-previous');
+            const dot = item.querySelector('.job-dot');
+            if (dot) {
+                dot.classList.remove('active-dot');
+                dot.style.animation = '';
+            }
+        });
+    }
+
     jobItems.forEach(function(jobItem) {
         jobItem.addEventListener('mouseenter', function() {
-            // Check if this job item has a progress line
             const hasProgressLine = this.querySelector('.progress-line');
             
+            // Always highlight this job's own dot
+            const currentDot = this.querySelector('.job-dot');
+            if (currentDot) {
+                // Reset animation by clearing and reapplying it
+                currentDot.style.animation = 'none';
+                void currentDot.offsetWidth; // Force reflow
+                currentDot.style.animation = 'activateDot 1500ms ease-out forwards';
+            }
+
             if (hasProgressLine) {
-                // If this job has a progress line, check the immediate next item and activate its dot
-                let nextElement = this.nextElementSibling;
-                // Skip to next job-item-group if needed
-                while (nextElement && !nextElement.classList.contains('job-item-group')) {
-                    nextElement = nextElement.nextElementSibling;
-                }
-                if (nextElement) {
-                    const nextDot = nextElement.querySelector('.job-dot');
-                    if (nextDot) {
-                        nextDot.style.backgroundColor = '#000000';
-                    }
-                }
+                // Check if there's a previous job with progress line
+                const previousJob = findPreviousJobWithProgressLine(this);
                 
-                // Also animate the previous element with a progress line
-                let previousElement = this.previousElementSibling;
-                while (previousElement) {
-                    const previousProgressLine = previousElement.querySelector('.progress-line');
-                    if (previousProgressLine) {
-                        previousElement.classList.add('animate-previous');
-                        break;
+                if (previousJob) {
+                    // Has previous job - animate the line going UP to it
+                    previousJob.classList.add('animate-previous');
+                    const previousDot = previousJob.querySelector('.job-dot');
+                    if (previousDot) {
+                        previousDot.style.animation = 'none';
+                        void previousDot.offsetWidth; // Force reflow
+                        previousDot.style.animation = 'activateDot 1500ms ease-out forwards';
                     }
-                    previousElement = previousElement.previousElementSibling;
+                } else {
+                    // No previous job - animate this job's own line (going DOWN)
+                    this.classList.add('animate-previous');
+                    
+                    // Highlight the immediate next job's dot
+                    const nextJob = findNextJob(this);
+                    if (nextJob) {
+                        const nextDot = nextJob.querySelector('.job-dot');
+                        if (nextDot) {
+                            nextDot.style.animation = 'none';
+                            void nextDot.offsetWidth; // Force reflow
+                            nextDot.style.animation = 'activateDot 1500ms ease-out forwards';
+                        }
+                    }
                 }
             } else {
-                // If this job doesn't have a progress line, trigger animation on job with one (above or below)
-                let previousElement = this.previousElementSibling;
-                
-                // Check above first
-                while (previousElement) {
-                    const previousProgressLine = previousElement.querySelector('.progress-line');
-                    if (previousProgressLine) {
-                        // Trigger the animation by adding a class
-                        previousElement.classList.add('animate-previous');
-                        return;
+                // Current job has no progress line - find adjacent job with one
+                const previousJob = findPreviousJobWithProgressLine(this);
+                if (previousJob) {
+                    previousJob.classList.add('animate-previous');
+                    const previousDot = previousJob.querySelector('.job-dot');
+                    if (previousDot) {
+                        previousDot.style.animation = 'none';
+                        void previousDot.offsetWidth; // Force reflow
+                        previousDot.style.animation = 'activateDot 1500ms ease-out forwards';
                     }
-                    previousElement = previousElement.previousElementSibling;
-                }
-                
-                // If not found above, check below
-                let nextElement = this.nextElementSibling;
-                while (nextElement) {
-                    const nextProgressLine = nextElement.querySelector('.progress-line');
-                    if (nextProgressLine) {
-                        // Trigger the animation by adding a class
-                        nextElement.classList.add('animate-previous');
-                        // Also change the dot color to black
-                        const nextDot = nextElement.querySelector('.job-dot');
+                } else {
+                    // If no previous job, check the next job
+                    const nextJob = findNextJobWithProgressLine(this);
+                    if (nextJob) {
+                        nextJob.classList.add('animate-previous');
+                        const nextDot = nextJob.querySelector('.job-dot');
                         if (nextDot) {
-                            nextDot.style.backgroundColor = '#000000';
+                            nextDot.style.animation = 'none';
+                            void nextDot.offsetWidth; // Force reflow
+                            nextDot.style.animation = 'activateDot 1500ms ease-out forwards';
                         }
-                        return;
                     }
-                    nextElement = nextElement.nextElementSibling;
                 }
             }
         });
-        
-        jobItem.addEventListener('mouseleave', function() {
-            // Remove the animation class from all job items
-            jobItems.forEach(function(item) {
-                item.classList.remove('animate-previous');
-                const dot = item.querySelector('.job-dot');
-                if (dot) {
-                    dot.style.backgroundColor = '';
-                }
-            });
-        });
+
+        jobItem.addEventListener('mouseleave', clearAllStates);
     });
 });

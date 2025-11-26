@@ -1,48 +1,61 @@
+/**
+ * Name glitch animation - creates a periodic glitch effect on the site name
+ * The animation can be toggled via enableNameAnimation in the config
+ */
 document.addEventListener('DOMContentLoaded', function() {
   const nameElement = document.querySelector('.departure-mono-name');
-  const jobTitleElement = document.querySelector('.departure-mono-job-title');
   if (!nameElement) return;
-  
-  // Check if animation is enabled from hugo.toml
+
+  // Allow users to disable this via hugo.toml config
   const animationEnabled = window.enableNameAnimation !== false;
   if (!animationEnabled) return;
-  
+
   const originalText = nameElement.textContent;
-  const originalJobTitle = jobTitleElement ? jobTitleElement.textContent : '';
-  // Use only characters that are guaranteed to be same width
+  // Greek letters give consistent width in monospace fonts, preventing layout shift
   const glitchChars = 'ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω';
   let glitchInterval = null;
-  
+
+  /**
+   * Animates the name with a glitch effect for 3 seconds
+   * Glitch intensity fades out over time to smoothly return to original text
+   */
   function startGlitch() {
+    // Clear any existing animation to prevent overlapping intervals
+    if (glitchInterval) clearInterval(glitchInterval);
+
     let animationTime = 0;
     const animationDuration = 3000; // 3 second glitch effect
-    
+
     glitchInterval = setInterval(() => {
+      // Animation complete - restore original text and stop
       if (animationTime >= animationDuration) {
         clearInterval(glitchInterval);
         nameElement.textContent = originalText;
         return;
       }
-      
+
+      // Build the glitched text by randomly replacing characters
       let displayText = '';
       for (let i = 0; i < originalText.length; i++) {
-        // Reduce glitch intensity as animation progresses
+        // Fade out the glitch effect as we approach the end
         const intensity = 1 - (animationTime / animationDuration);
-        if (Math.random() < 0.2 * intensity) {
+        const shouldGlitch = Math.random() < 0.2 * intensity;
+
+        if (shouldGlitch) {
           displayText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
         } else {
           displayText += originalText[i];
         }
       }
       nameElement.textContent = displayText;
-      
-      animationTime += 300; // Update every 300ms (slower)
+
+      animationTime += 300;
     }, 300);
   }
-  
-  // Start glitch every 15 seconds
+
+  // Trigger glitch animation every 15 seconds for that random cyber aesthetic
   setInterval(startGlitch, 15000);
-  
-  // Start first glitch immediately
+
+  // Start the first glitch right away
   startGlitch();
 });
