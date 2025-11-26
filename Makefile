@@ -1,4 +1,4 @@
-.PHONY: theme-init theme-update serve dev build clean deploy help
+.PHONY: theme-init theme-update serve dev build clean help
 
 help:
 	@echo "Available commands:"
@@ -6,8 +6,7 @@ help:
 	@echo "  make theme-update  - Update theme to latest version"
 	@echo "  make serve         - Run development server"
 	@echo "  make dev           - Run development server with drafts"
-	@echo "  make build         - Build static site"
-	@echo "  make deploy        - Build and deploy to GitHub"
+	@echo "  make build         - Build static site (GitHub Actions handles deployment)"
 	@echo "  make clean         - Clean build artifacts"
 
 theme-init:
@@ -24,11 +23,6 @@ dev:
 
 build:
 	export GOPRIVATE=github.com/lpuljic/* && hugo
-
-deploy: build
-	git add public/
-	git commit -m "Deploy: $$(date '+%Y-%m-%d %H:%M:%S')"
-	git push origin main
 
 clean:
 	rm -rf resources/
