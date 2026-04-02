@@ -15,13 +15,16 @@ theme-init:
 theme-update:
 	export GOPRIVATE=github.com/lpuljic/* && hugo mod get -u
 
-serve:
+gitinfo:
+	@echo '{"hash":"'$$(git log --format='%h' -1)'","date":"'$$(git log --format='%ci' -1 | cut -d' ' -f1)'"}' > data/git.json
+
+serve: gitinfo
 	export GOPRIVATE=github.com/lpuljic/* && hugo server
 
-dev:
+dev: gitinfo
 	export GOPRIVATE=github.com/lpuljic/* && hugo server -D
 
-build:
+build: gitinfo
 	export GOPRIVATE=github.com/lpuljic/* && hugo
 
 clean:

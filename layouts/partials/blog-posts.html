@@ -1,0 +1,106 @@
+<!-- Blog Posts - Changelog Style -->
+<div class="changelog-list max-w-4xl">
+    <h2 class="text-center text-sm tracking-widest text-gray-500 mb-10">+ CHANGELOG +</h2>
+
+    <div id="blog-posts-container"
+         data-initial-visible="{{ if .Site.Params.blog_post }}{{ .Site.Params.blog_post.initialVisible }}{{ else }}10{{ end }}"
+         data-increment="{{ if .Site.Params.blog_post }}{{ .Site.Params.blog_post.loadMoreIncrement }}{{ else }}3{{ end }}">
+        {{ if .Site.RegularPages }}
+            {{ range $index, $page := (where .Site.RegularPages "Section" "blog") }}
+                {{ $initialVisible := (cond .Site.Params.blog_post .Site.Params.blog_post.initialVisible 10) }}
+                {{ $readTime := math.Max (math.Ceil (div $page.WordCount 200)) 1 }}
+                {{ $isNew := (now.AddDate 0 0 -14).Before $page.Date }}
+                <div class="blog-post-item {{ if ge $index $initialVisible }}hidden{{ end }}">
+                    <a href="{{ $page.Permalink }}" class="changelog-row">
+                        <span class="changelog-date">[{{ $page.Date.Format "JAN.02.2006" | upper }}]</span>
+                        <span class="changelog-title">{{ $page.Title }}</span>
+                        <span class="changelog-dots"></span>
+                        <span class="changelog-meta">
+                            {{- $readTime }} min read
+                            {{- if $isNew }} <span class="changelog-new">NEW</span>{{ end -}}
+                        </span>
+                    </a>
+                </div>
+            {{ end }}
+        {{ else }}
+            <p class="text-sm text-gray-500 text-center">No posts yet.</p>
+        {{ end }}
+    </div>
+
+    {{ $initialVisible := (cond .Site.Params.blog_post .Site.Params.blog_post.initialVisible 10) }}
+    {{ if gt (len (where .Site.RegularPages "Section" "blog")) $initialVisible }}
+    <div class="px-4 pb-4 pt-6 flex gap-2">
+        <button id="load-more-blog" class="text-gray-600 hover:text-gray-900 text-sm">show more</button>
+        <button id="show-less-blog" class="text-gray-600 hover:text-gray-900 text-sm" style="display: none;">show less</button>
+    </div>
+    {{ end }}
+</div>
+
+<style>
+.changelog-list {
+    font-family: 'Departure Mono', monospace;
+}
+
+.changelog-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    text-decoration: none;
+    color: inherit;
+    line-height: 1.8;
+}
+
+.changelog-row:hover .changelog-title {
+    text-decoration: underline;
+    color: #000;
+}
+
+.changelog-date {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    color: #666;
+    letter-spacing: -0.03em;
+}
+
+.changelog-title {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    color: #444;
+    transition: color 0.15s ease;
+}
+
+.changelog-dots {
+    flex: 1;
+    overflow: hidden;
+    font-size: 0.8rem;
+    color: #aaa;
+    letter-spacing: 0.15em;
+    min-width: 2rem;
+}
+
+.changelog-dots::after {
+    content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+    white-space: nowrap;
+}
+
+.changelog-meta {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: #888;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.changelog-new {
+    display: inline-block;
+    background: #22c55e;
+    color: #fff;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    letter-spacing: 0.05em;
+}
+</style>

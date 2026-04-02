@@ -16,6 +16,11 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - name: Generate git info
+        run: |
+          mkdir -p data
+          echo '{"hash":"'$(git log --format='%h' -1)'","date":"'$(git log --format='%ci' -1 | cut -d' ' -f1)'"}' > data/git.json
+
       - name: Build site
         env:
           GOPRIVATE: github.com/lpuljic/*

@@ -15,6 +15,9 @@ title = 'pixelarch'
 # Disable auto-generated taxonomy and term pages (portfolio site doesn't need these)
 disableKinds = ['taxonomy', 'term']
 
+# Expose .GitInfo on pages for commit hash display
+enableGitInfo = true
+
 # Core profile information
 [params]
 # Full name displayed in header/footer

@@ -6,3 +6,4 @@ resources/
 *~
 .env
 public/
+data/git.json
