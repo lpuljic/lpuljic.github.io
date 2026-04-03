@@ -1,0 +1,3 @@
+[submodule "pixelarch"]
+	path = pixelarch
+	url = https://github.com/lpuljic/pixelarch

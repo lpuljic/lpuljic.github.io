@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -25,9 +27,7 @@ jobs:
       - name: Build site
         env:
           GOPRIVATE: github.com/lpuljic/*
-          GITHUB_TOKEN: ${{ secrets.PIXELARCH_TOKEN }}
         run: |
-          git config --global url."https://${{ secrets.PIXELARCH_TOKEN }}@github.com/".insteadOf "https://github.com/"
           hugo mod get -u
           hugo --minify
 
