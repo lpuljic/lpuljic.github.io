@@ -84,3 +84,4 @@ loadMoreIncrement = 5
 # Commit badge (links to the git hash on GitHub)
 enableCommitBadge = true
 repoURL = "https://github.com/lpuljic/lpuljic.github.io"
+commitHash = "c9cb113"
