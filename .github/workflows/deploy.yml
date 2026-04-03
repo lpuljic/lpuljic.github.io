@@ -28,6 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PIXELARCH_TOKEN }}
         run: |
           git config --global url."https://${{ secrets.PIXELARCH_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          hugo mod get -u
           hugo --minify
 
       - name: Deploy to gh-pages

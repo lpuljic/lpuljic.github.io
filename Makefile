@@ -19,13 +19,13 @@ gitinfo:
 	@echo '{"hash":"'$$(git log --format='%h' -1)'","date":"'$$(git log --format='%ci' -1 | cut -d' ' -f1)'"}' > data/git.json
 
 serve: gitinfo
-	export GOPRIVATE=github.com/lpuljic/* && hugo server
+	export GOPRIVATE=github.com/lpuljic/* && hugo mod get -u && hugo server
 
 dev: gitinfo
-	export GOPRIVATE=github.com/lpuljic/* && hugo server -D
+	export GOPRIVATE=github.com/lpuljic/* && hugo mod get -u && hugo server -D
 
 build: gitinfo
-	export GOPRIVATE=github.com/lpuljic/* && hugo
+	export GOPRIVATE=github.com/lpuljic/* && hugo mod get -u && hugo
 
 clean:
 	rm -rf resources/
