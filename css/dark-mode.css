@@ -205,6 +205,15 @@
     align-self: auto !important;
 }
 
+[data-theme="dark"] .commit-badge {
+    color: #666;
+}
+
+[data-theme="dark"] .commit-badge .commit-hash {
+    border-color: #666;
+    color: #aaa;
+}
+
 .commit-badge .commit-hash {
     display: inline !important;
     border: 1px dotted currentColor;
