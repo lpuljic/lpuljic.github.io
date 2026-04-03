@@ -26,11 +26,7 @@ jobs:
           echo '{"hash":"'$(git log --format='%h' -1)'","date":"'$(git log --format='%ci' -1 | cut -d' ' -f1)'"}' > data/git.json
 
       - name: Build site
-        env:
-          GOPRIVATE: github.com/lpuljic/*
-        run: |
-          hugo mod get -u
-          hugo --minify
+        run: hugo --minify
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
