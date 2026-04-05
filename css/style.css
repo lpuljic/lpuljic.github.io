@@ -118,12 +118,6 @@ nav a:hover::after {
 .departure-mono-name {
     font-family: 'Departure Mono', monospace !important;
     letter-spacing: -0.11em !important;
-    background-color: #e5e7eb;
-    padding: 1rem 1.5rem;
-    display: inline-block;
-    border-radius: 0.25rem;
-    font-size: 3.5rem !important;
-    font-weight: 700 !important;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -202,10 +196,6 @@ nav a:hover::after {
     color: var(--color-text-primary);
 }
 
-.border-primary {
-    border-color: var(--color-border);
-}
-
 .container-main {
     width: 100%;
     max-width: 1440px;
@@ -224,6 +214,147 @@ nav a:hover::after {
          padding: 2.5rem 5rem;
      }
  }
+
+/* Changelog Blog List */
+.changelog-list {
+    font-family: 'Departure Mono', monospace;
+}
+
+.changelog-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    text-decoration: none;
+    color: inherit;
+    line-height: 1.8;
+}
+
+.changelog-row:hover .changelog-title {
+    text-decoration: underline;
+    color: var(--color-hover);
+}
+
+.changelog-date {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    letter-spacing: -0.03em;
+}
+
+.changelog-title {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    transition: color 0.15s ease;
+}
+
+.changelog-dots {
+    flex: 1;
+    overflow: hidden;
+    font-size: 0.8rem;
+    color: #aaa;
+    letter-spacing: 0.15em;
+    min-width: 2rem;
+}
+
+.changelog-dots::after {
+    content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+    white-space: nowrap;
+}
+
+.changelog-meta {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: #888;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.changelog-new {
+    display: inline-block;
+    background: #22c55e;
+    color: #fff;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    letter-spacing: 0.05em;
+}
+
+/* Blog Side Navigation */
+.blog-side-nav {
+    position: fixed;
+    top: 8.4rem;
+    left: 1.5rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-family: 'Departure Mono', monospace;
+    font-size: 0.75rem;
+}
+
+.blog-side-nav-item {
+    color: #777;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.15s ease;
+    letter-spacing: -0.02em;
+}
+
+.blog-side-nav-item:hover,
+.blog-side-nav-item.active {
+    color: var(--color-text-primary);
+}
+
+.blog-side-nav-key {
+    color: var(--color-text-secondary);
+}
+
+.blog-side-nav-item:hover .blog-side-nav-key,
+.blog-side-nav-item.active .blog-side-nav-key {
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 1024px) {
+    .blog-side-nav {
+        display: none;
+    }
+}
+
+/* Commit Badge */
+.commit-badge {
+    position: fixed;
+    top: 1rem;
+    left: 1.5rem;
+    z-index: 999;
+    font-family: 'Departure Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: -0.02em;
+    color: #999;
+    white-space: nowrap;
+    width: auto !important;
+    flex: none !important;
+    align-self: auto !important;
+}
+
+.commit-badge .commit-hash {
+    display: inline !important;
+    border: 1px dotted currentColor;
+    border-radius: 3px;
+    padding: 1px 4px;
+    color: var(--color-text-primary);
+    text-decoration: none !important;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+    cursor: pointer;
+}
+
+.commit-badge .commit-hash:hover {
+    opacity: 1;
+}
 
 /* Custom Scrollbar Styling */
 /* Firefox */
@@ -251,13 +382,13 @@ nav a:hover::after {
  }
 
 /* Show More/Less Button Animation */
-#load-more-work, #show-less-work, #load-more-blog, #show-less-blog {
+.btn-load-more {
      position: relative;
      overflow: hidden;
      transition: color 0.2s ease;
  }
 
-#load-more-work::before, #show-less-work::before, #load-more-blog::before, #show-less-blog::before {
+.btn-load-more::before {
      content: '';
      position: absolute;
      top: 0;
@@ -272,7 +403,7 @@ nav a:hover::after {
      pointer-events: none;
  }
 
-#load-more-work:hover::before, #show-less-work:hover::before, #load-more-blog:hover::before, #show-less-blog:hover::before {
+.btn-load-more:hover::before {
      opacity: 0.6;
      animation: dotScan 0.6s ease-in-out;
  }

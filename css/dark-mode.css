@@ -48,10 +48,6 @@
     color: var(--color-text-primary) !important;
 }
 
-[data-theme="dark"] .bg-secondary {
-    background-color: var(--color-bg-secondary);
-}
-
 /* Blog content prose */
 [data-theme="dark"] .blog-content p {
     color: #d1d5db;
@@ -182,29 +178,11 @@
 }
 
 /* Dark mode: load more/less buttons */
-[data-theme="dark"] #load-more-work::before,
-[data-theme="dark"] #show-less-work::before,
-[data-theme="dark"] #load-more-blog::before,
-[data-theme="dark"] #show-less-blog::before {
+[data-theme="dark"] .btn-load-more::before {
     background-image: radial-gradient(circle, #e5e7eb 0.5px, transparent 0.5px);
 }
 
-/* Commit badge */
-.commit-badge {
-    position: fixed;
-    top: 1rem;
-    left: 1.5rem;
-    z-index: 999;
-    font-family: 'Departure Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: -0.02em;
-    color: #999;
-    white-space: nowrap;
-    width: auto !important;
-    flex: none !important;
-    align-self: auto !important;
-}
-
+/* Dark mode: commit badge */
 [data-theme="dark"] .commit-badge {
     color: #666;
 }
@@ -212,22 +190,6 @@
 [data-theme="dark"] .commit-badge .commit-hash {
     border-color: #666;
     color: #aaa;
-}
-
-.commit-badge .commit-hash {
-    display: inline !important;
-    border: 1px dotted currentColor;
-    border-radius: 3px;
-    padding: 1px 4px;
-    color: var(--color-text-primary);
-    text-decoration: none !important;
-    opacity: 0.7;
-    transition: opacity 0.15s ease;
-    cursor: pointer;
-}
-
-.commit-badge .commit-hash:hover {
-    opacity: 1;
 }
 
 /* Theme toggle button */
