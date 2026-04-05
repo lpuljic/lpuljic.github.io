@@ -283,6 +283,18 @@ nav a:hover::after {
     letter-spacing: 0.05em;
 }
 
+/* Changelog: mobile layout - just date + title, nothing else */
+@media (max-width: 640px) {
+    .changelog-row {
+        line-height: 2;
+    }
+
+    .changelog-dots,
+    .changelog-meta {
+        display: none;
+    }
+}
+
 /* Blog Side Navigation */
 .blog-side-nav {
     position: fixed;
@@ -318,6 +330,25 @@ nav a:hover::after {
     color: var(--color-text-primary);
 }
 
+/* Blog page content area - clear the fixed side nav on desktop */
+.blog-page-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+    .blog-page-content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    .blog-page-content {
+        padding-left: 12rem;
+    }
+}
+
 @media (max-width: 1024px) {
     .blog-side-nav {
         display: none;
@@ -338,6 +369,12 @@ nav a:hover::after {
     width: auto !important;
     flex: none !important;
     align-self: auto !important;
+}
+
+@media (max-width: 640px) {
+    .commit-badge {
+        display: none;
+    }
 }
 
 .commit-badge .commit-hash {
