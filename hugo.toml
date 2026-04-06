@@ -41,6 +41,10 @@ bio = "Passionate about building scalable systems and mentoring engineers. Exper
 # Enable animated name effect in header
 enableNameAnimation = true
 
+# Commit badge (links to the git hash on GitHub)
+enableCommitBadge = true
+repoURL = "https://github.com/lpuljic/lpuljic.github.io"
+
 # Navigation menu items (rendered in order)
 [[params.nav]]
 name = "work"
@@ -80,8 +84,3 @@ loadMoreIncrement = 5
 initialVisible = 6
 # Number of additional entries loaded when clicking "load more"
 loadMoreIncrement = 5
-
-# Commit badge (links to the git hash on GitHub)
-enableCommitBadge = true
-repoURL = "https://github.com/lpuljic/lpuljic.github.io"
-commitHash = "c9cb113"

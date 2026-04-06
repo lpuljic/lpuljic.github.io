@@ -2,6 +2,6 @@ module github.com/lpuljic/website
 
 go 1.26.0
 
-require github.com/lpuljic/pixelarch v0.0.0-20260404011238-8207b4d66a64 // indirect
+require github.com/lpuljic/pixelarch v0.0.0-20260405231126-dcdb3ee4574b // indirect
 
-replace github.com/lpuljic/pixelarch => ./pixelarch
+replace github.com/lpuljic/pixelarch => ../pixelarch
