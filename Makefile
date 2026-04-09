@@ -28,8 +28,9 @@ serve: submodules gitinfo
 	export GOPRIVATE=github.com/lpuljic/* && hugo mod get -u && hugo server
 
 serve-local: gitinfo
-	rsync -a --delete --exclude='.git' $(THEME_SRC)/ pixelarch/
-	export GOPRIVATE=github.com/lpuljic/* && hugo mod get -u && hugo server
+	@sed -i '' 's|=> ./pixelarch|=> $(THEME_SRC)|' go.mod
+	@trap 'sed -i "" "s|=> $(THEME_SRC)|=> ./pixelarch|" go.mod' EXIT; \
+	export GOPRIVATE=github.com/lpuljic/* && hugo mod clean && hugo server
 
 dev: submodules gitinfo
 	export GOPRIVATE=github.com/lpuljic/* && hugo mod get -u && hugo server -D
