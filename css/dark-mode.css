@@ -136,6 +136,16 @@
 
 [data-theme="dark"] .changelog-row:hover .changelog-title {
     color: #d4ccf0;
+    text-shadow: 0 0 10px rgba(212, 204, 240, 0.3);
+}
+
+[data-theme="dark"] .changelog-row:hover .changelog-date {
+    color: #22c55e;
+    text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+[data-theme="dark"] .changelog-row:hover {
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.05) 0%, transparent 100%);
 }
 
 [data-theme="dark"] .changelog-dots {
@@ -158,6 +168,15 @@
 /* Dark mode: footer */
 [data-theme="dark"] footer {
     color: #777;
+}
+
+[data-theme="dark"] .footer-prompt {
+    color: #22c55e;
+    text-shadow: 0 0 6px rgba(34, 197, 94, 0.4);
+}
+
+[data-theme="dark"] .footer-text {
+    color: #555;
 }
 
 /* Dark mode: scrollbar */
@@ -224,4 +243,15 @@
 
 [data-theme="dark"] .theme-toggle-icon[data-icon="light"] {
     display: none;
+}
+
+/* Dark mode: CRT scanlines are more visible */
+[data-theme="dark"] .crt-overlay {
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 2px
+    );
 }
