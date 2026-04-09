@@ -343,6 +343,7 @@ nav a:hover::after {
 
 /* Blog page content area - clear the fixed side nav on desktop */
 .blog-page-content {
+    padding-top: 8.4rem;
     padding-left: 1rem;
     padding-right: 1rem;
 }
